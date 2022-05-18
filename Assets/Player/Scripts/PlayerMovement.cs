@@ -16,7 +16,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool _isTouch;
 
     private Rigidbody _rb;
-    private InputManager _input;
     private Camera _camera;
     private Vector3 worldCoordinates;
 
@@ -27,18 +26,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void Awake()
     {
-        _input = InputManager.Instance;
         _camera = Camera.main;
-    }
-
-    private void OnEnable()
-    {
-        _input.OnStartTouch += TouchMove;
-    }
-
-    private void OnDisable()
-    {
-        _input.OnEndTouch -= TouchMove;
     }
 
     void Start()

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5349293654092021885}
   - component: {fileID: 1978841953776082819}
-  - component: {fileID: 5349293654092021886}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -28,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,17 +42,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 279390cf7845f314f98efb623f21918c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5349293654092021886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5349293654092021887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd65a23dea8980b48b2b44831ba8f463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
