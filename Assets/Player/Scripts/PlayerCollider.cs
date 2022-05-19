@@ -28,6 +28,10 @@ public class PlayerCollider : Singleton<PlayerCollider>
             case "Ground":
                 _isGrounded = true;
                 break;
+
+            case "Box":
+                //Impact with player
+                break;
         }
     }
 

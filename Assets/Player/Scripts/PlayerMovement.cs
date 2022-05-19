@@ -7,17 +7,23 @@ public class PlayerMovement : Singleton<PlayerMovement>
 {
     [SerializeField]
     private float _moveSpeed;
+    private float _xMove;
     [SerializeField]
     private float _zMove;
-    private float _yMove;
     [SerializeField]
     private float _jumpForce;
-    private float _firstStepOffset;
-    private bool _isTouch;
+    [SerializeField]
+    private float _gravity;
+    private bool _isJump;
 
     private Rigidbody _rb;
-    private Camera _camera;
-    private Vector3 worldCoordinates;
+    [SerializeField]
+    private float _cameraMoveSpeed;
+    [SerializeField]
+    private Transform _camera;
+    private Transform _cameraMain;
+    private Joystick _joystick;
+    private Vector3 _moveDirection;
 
     public Rigidbody GetRB()
     {
@@ -26,35 +32,63 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void Awake()
     {
-        _camera = Camera.main;
+        _joystick = Joystick.Instance;
     }
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _cameraMain = Camera.main.transform;
     }
 
     void Update()
     {
-        if (!_isTouch)
-            RunMovement(_rb.velocity.x);
+        SetCameraPosition();
+        TouchMove();
+        Jump();
     }
 
-    private void RunMovement(float x)
+    private void TouchMove()
     {
-        _rb.velocity = new Vector3(x, _rb.velocity.y, _moveSpeed * Time.deltaTime);
+        if (_joystick.Horizontal >= 0.2f)
+            _xMove = _moveSpeed;
+        else if (_joystick.Horizontal <= -0.2f)
+            _xMove = -_moveSpeed;
+        else
+            _xMove = 0;
+
+        _moveDirection = new Vector3(_xMove, _rb.velocity.y, _zMove);
+
+        _rb.velocity = _moveDirection;
     }
 
-    public void TouchMove(Vector2 screenPos, float time)
+    private void Jump()
     {
-        Vector3 screenCoordinates = new Vector3(screenPos.x, _rb.velocity.y, _camera.nearClipPlane);
-        worldCoordinates = _camera.ScreenToWorldPoint(screenCoordinates);
-
-        RunMovement(worldCoordinates.x);
+        if (_isJump)
+        {
+            if (PlayerCollider.Instance.GetGrounded())
+            {
+                _isJump = false;
+                _moveDirection.y = _jumpForce;
+                _rb.AddRelativeForce(_moveDirection, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            if (!PlayerCollider.Instance.GetGrounded())
+                _moveDirection.y = _rb.velocity.y - _gravity;
+        }
     }
 
-    public void SetTouch(bool value)
+    private void SetCameraPosition()
     {
-        _isTouch = value;
+        _cameraMain.position = Vector3.Lerp(_cameraMain.position, _camera.position, _cameraMoveSpeed * Time.deltaTime);
+        _cameraMain.rotation = Quaternion.Lerp(_cameraMain.rotation, _camera.rotation, _cameraMoveSpeed * Time.deltaTime);
+        _cameraMain.localScale = Vector3.Lerp(_cameraMain.localScale, _camera.localScale, _cameraMoveSpeed * Time.deltaTime);
+    }
+
+    public void SetJump(bool value)
+    {
+        _isJump = value;
     }
 }
