@@ -32,6 +32,10 @@ public class PlayerCollider : Singleton<PlayerCollider>
             case "Box":
                 PlayerMovement.Instance.SetDisable(true);
                 break;
+
+            case "Hammer":
+                PlayerMovement.Instance.SetDisable(true);
+                break;
         }
     }
 

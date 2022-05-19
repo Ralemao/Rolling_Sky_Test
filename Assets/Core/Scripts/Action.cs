@@ -6,7 +6,7 @@ public class Action : MonoBehaviour
 {
     private enum PlatformsActions { Jump, Fall, Box }
     [SerializeField]
-    private PlatformsActions actions;
+    private PlatformsActions _actions;
 
     private Animator _anim;
 
@@ -24,7 +24,7 @@ public class Action : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            switch (actions.ToString())
+            switch (_actions.ToString())
             {
                 case "Jump":
                     _anim.SetTrigger("jump");
