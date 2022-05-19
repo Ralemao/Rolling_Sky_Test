@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
-  _zMove: 3
+  _zMove: 5
   _jumpForce: 10
   _gravity: 1
   _cameraMoveSpeed: 2

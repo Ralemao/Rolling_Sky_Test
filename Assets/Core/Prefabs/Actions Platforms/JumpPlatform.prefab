@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3386416963e1c9545afacb544da020e4, type: 2}
+    - target: {fileID: 5053799425453140428, guid: d04218e9afe537c4e83f09d854b04016,
+        type: 3}
+      propertyPath: m_Name
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 5403161137667165339, guid: d04218e9afe537c4e83f09d854b04016,
         type: 3}
       propertyPath: m_Enabled
@@ -87,5 +92,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8079077088523760034, guid: d04218e9afe537c4e83f09d854b04016,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 776c8e0e59968aa44a046ab513a78066, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04218e9afe537c4e83f09d854b04016, type: 3}
