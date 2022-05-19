@@ -15,13 +15,16 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField]
     private float _gravity;
     private bool _isJump;
+    private bool _isDisable;
 
-    private Rigidbody _rb;
+    [Header("Camera Atributes")]
     [SerializeField]
     private float _cameraMoveSpeed;
     [SerializeField]
     private Transform _camera;
     private Transform _cameraMain;
+
+    private Rigidbody _rb;
     private Joystick _joystick;
     private Vector3 _moveDirection;
 
@@ -32,23 +35,34 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void Awake()
     {
-        _joystick = Joystick.Instance;
     }
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _cameraMain = Camera.main.transform;
+        _joystick = Joystick.Instance;
     }
 
     void Update()
     {
         SetCameraPosition();
-        TouchMove();
+
+        if (_isDisable) return;
+
+        TouchControl();
+        Movement();
         Jump();
     }
 
-    private void TouchMove()
+    private void SetCameraPosition()
+    {
+        _cameraMain.position = Vector3.Lerp(_cameraMain.position, _camera.position, _cameraMoveSpeed * Time.deltaTime);
+        _cameraMain.rotation = Quaternion.Lerp(_cameraMain.rotation, _camera.rotation, _cameraMoveSpeed * Time.deltaTime);
+        _cameraMain.localScale = Vector3.Lerp(_cameraMain.localScale, _camera.localScale, _cameraMoveSpeed * Time.deltaTime);
+    }
+
+    private void TouchControl()
     {
         if (_joystick.Horizontal >= 0.2f)
             _xMove = _moveSpeed;
@@ -56,9 +70,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
             _xMove = -_moveSpeed;
         else
             _xMove = 0;
+    }
 
+    private void Movement()
+    {
         _moveDirection = new Vector3(_xMove, _rb.velocity.y, _zMove);
-
         _rb.velocity = _moveDirection;
     }
 
@@ -80,15 +96,13 @@ public class PlayerMovement : Singleton<PlayerMovement>
         }
     }
 
-    private void SetCameraPosition()
-    {
-        _cameraMain.position = Vector3.Lerp(_cameraMain.position, _camera.position, _cameraMoveSpeed * Time.deltaTime);
-        _cameraMain.rotation = Quaternion.Lerp(_cameraMain.rotation, _camera.rotation, _cameraMoveSpeed * Time.deltaTime);
-        _cameraMain.localScale = Vector3.Lerp(_cameraMain.localScale, _camera.localScale, _cameraMoveSpeed * Time.deltaTime);
-    }
-
     public void SetJump(bool value)
     {
         _isJump = value;
+    }
+
+    public void SetDisable(bool value)
+    {
+        _isDisable = value;
     }
 }

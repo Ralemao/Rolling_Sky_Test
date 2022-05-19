@@ -30,7 +30,7 @@ public class PlayerCollider : Singleton<PlayerCollider>
                 break;
 
             case "Box":
-                //Impact with player
+                PlayerMovement.Instance.SetDisable(true);
                 break;
         }
     }
