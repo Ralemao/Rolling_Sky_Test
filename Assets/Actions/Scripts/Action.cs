@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Action : MonoBehaviour
 {
-    private enum PlatformsActions { Jump, Fall, Box, Teleport, Move }
+    private enum Actions { Jump, Fall, Box, Teleport, Move, Star }
     [SerializeField]
-    private PlatformsActions _actions;
+    private Actions _actions;
 
     [SerializeField]
     private Transform _obj;
@@ -15,11 +15,6 @@ public class Action : MonoBehaviour
     void Start()
     {
         _anim = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,6 +45,11 @@ public class Action : MonoBehaviour
                         other.GetComponent<PlayerAnimation>().SetPlayerNewPos(_obj.transform.position);
 
                     other.GetComponent<PlayerAnimation>().DesapearAnim();
+                    break;
+
+                case "Star":
+                    GameManager.Instance.AddStar();
+                    Destroy(this.gameObject);
                     break;
             }
         }

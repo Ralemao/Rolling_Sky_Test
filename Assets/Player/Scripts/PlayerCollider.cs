@@ -11,16 +11,6 @@ public class PlayerCollider : Singleton<PlayerCollider>
         return _isGrounded;
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "Out")

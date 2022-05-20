@@ -33,10 +33,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
         return _rb;
     }
 
-    private void Awake()
-    {
-    }
-
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
