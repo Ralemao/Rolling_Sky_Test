@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Action : MonoBehaviour
 {
-    private enum PlatformsActions { Jump, Fall, Box }
+    private enum PlatformsActions { Jump, Fall, Box, Teleport }
     [SerializeField]
     private PlatformsActions _actions;
 
+    [SerializeField]
+    private Transform _obj;
     private Animator _anim;
 
     void Start()
     {
-        _anim = GetComponent<Animator>();
+        if(_anim != null)
+            _anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -37,6 +40,13 @@ public class Action : MonoBehaviour
 
                 case "Box":
                     _anim.SetTrigger("boxUp");
+                    break;
+
+                case "Teleport":
+                    if(_obj != null)
+                        other.GetComponent<PlayerAnimation>().SetPlayerNewPos(_obj.transform.position);
+
+                    other.GetComponent<PlayerAnimation>().DesapearAnim();
                     break;
             }
         }

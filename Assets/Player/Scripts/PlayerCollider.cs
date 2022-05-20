@@ -21,6 +21,15 @@ public class PlayerCollider : Singleton<PlayerCollider>
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Out")
+        {
+            other.GetComponent<MeshRenderer>().enabled = true;
+            PlayerAnimation.Instance.ApearAnim();
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         switch (collision.gameObject.tag)
