@@ -39,10 +39,12 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
     {
         yield return new WaitForSeconds(_waitForAnim);
         PlayerMovement.Instance.SetDisable(false);
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void DesapearAnim()
     {
+        GetComponent<Rigidbody>().isKinematic = true;
         PlayerMovement.Instance.SetDisable(true);
         _anim.SetTrigger("desapear");
         StartCoroutine(EndDesapearAnim());
