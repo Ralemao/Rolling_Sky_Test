@@ -4,46 +4,17 @@ using UnityEngine;
 
 public class PlayerCollider : Singleton<PlayerCollider>
 {
-    private bool _isGrounded;
 
-    public bool GetGrounded()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        return _isGrounded;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.name == "Out")
+        switch (hit.collider.tag)
         {
-            other.GetComponent<MeshRenderer>().enabled = true;
-            PlayerAnimation.Instance.ApearAnim();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Ground":
-                _isGrounded = true;
-                break;
-
             case "Box":
-                PlayerMovement.Instance.SetDisable(true);
+                GameManager.Instance.RemoveLives();
                 break;
 
             case "Hammer":
-                PlayerMovement.Instance.SetDisable(true);
-                break;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Ground":
-                _isGrounded = false;
+                GameManager.Instance.RemoveLives();
                 break;
         }
     }

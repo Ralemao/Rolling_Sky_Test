@@ -29,6 +29,9 @@ public class GameManager : SingletonPersisten<GameManager>
     public override void Awake()
     {
         base.Awake();
+
+        if (_lives == 3)
+            ResetLevelSettings();
     }
 
     void Start()
@@ -48,20 +51,24 @@ public class GameManager : SingletonPersisten<GameManager>
 
     public void RemoveLives()
     {
+        //Stop song
+        PlayerController.Instance.SetDisable(true);
+
         if (_lives > 0)
             _lives--;
 
         if (_lives > 0)
+            //Call reload scene by canvas after death for play again
             LevelManager.Instance.ReloadScene();
 
         if (_lives < 1)
         {
-            ResetLevel();
+            ResetLevelSettings();
             LevelManager.Instance.LevelMenuScene("Level_Menu");
         }
     }
 
-    public void ResetLevel()
+    public void ResetLevelSettings()
     {
         _lives = 3;
         _stars = 0;

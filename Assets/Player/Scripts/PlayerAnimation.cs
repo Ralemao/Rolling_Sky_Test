@@ -38,14 +38,13 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
     IEnumerator EndApearAnim()
     {
         yield return new WaitForSeconds(_waitForAnim);
-        PlayerMovement.Instance.SetDisable(false);
-        GetComponent<Rigidbody>().isKinematic = false;
+        _anim.SetTrigger("idle");
+        PlayerMovement.Instance.IsMovable(false);
     }
 
     public void DesapearAnim()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
-        PlayerMovement.Instance.SetDisable(true);
+        PlayerMovement.Instance.IsMovable(true);
         _anim.SetTrigger("desapear");
         StartCoroutine(EndDesapearAnim());
     }

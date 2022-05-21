@@ -5,50 +5,53 @@ using UnityEngine;
 
 public class PlayerMovement : Singleton<PlayerMovement>
 {
+    [Header("Player Movement")]
     [SerializeField]
     private float _moveSpeed;
     private float _xMove;
+    private float _yMove;
     [SerializeField]
     private float _zMove;
     [SerializeField]
     private float _jumpForce;
     [SerializeField]
-    private float _gravity;
+    private float _waitForTuto;
     private bool _isJump;
-    private bool _isDisable;
+    private bool _canMove;
 
-    [Header("Camera Atributes")]
+    [Header("Camera")]
     [SerializeField]
     private float _cameraMoveSpeed;
     [SerializeField]
     private Transform _camera;
     private Transform _cameraMain;
 
-    private Rigidbody _rb;
+    private CharacterController _cController;
     private Joystick _joystick;
     private Vector3 _moveDirection;
 
-    public Rigidbody GetRB()
-    {
-        return _rb;
-    }
-
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _cController = GetComponent<CharacterController>();
         _cameraMain = Camera.main.transform;
         _joystick = Joystick.Instance;
+        StartCoroutine(Tutorial());
+    }
+
+    IEnumerator Tutorial()
+    {
+        yield return new WaitForSeconds(_waitForTuto);
+        _canMove = true;
     }
 
     void Update()
     {
         SetCameraPosition();
 
-        if (_isDisable) return;
-
+        if (!_canMove) return;
+        
         TouchControl();
         Movement();
-        Jump();
     }
 
     private void SetCameraPosition()
@@ -70,25 +73,32 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private void Movement()
     {
-        _moveDirection = new Vector3(_xMove, _rb.velocity.y, _zMove);
-        _rb.velocity = _moveDirection;
+        float magnitude = Mathf.Clamp01(_moveDirection.magnitude) * _moveSpeed;
+
+        _moveDirection = new Vector3(_xMove, 0, _zMove);
+        _moveDirection.Normalize();
+
+        _yMove += Physics.gravity.y * Time.deltaTime;
+
+        Jump();
+
+        Vector3 currentMovement = _moveDirection * magnitude;
+        currentMovement.y = _yMove;
+
+        _cController.Move(currentMovement * Time.deltaTime);
     }
 
     private void Jump()
     {
-        if (_isJump)
+        if (_cController.isGrounded)
         {
-            if (PlayerCollider.Instance.GetGrounded())
+            _yMove = -0.5f;
+
+            if (_isJump)
             {
                 _isJump = false;
-                _moveDirection.y = _jumpForce;
-                _rb.AddRelativeForce(_moveDirection, ForceMode.Impulse);
+                _yMove = _jumpForce;
             }
-        }
-        else
-        {
-            if (!PlayerCollider.Instance.GetGrounded())
-                _moveDirection.y = _rb.velocity.y - _gravity;
         }
     }
 
@@ -97,8 +107,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
         _isJump = value;
     }
 
-    public void SetDisable(bool value)
+    public void IsMovable(bool value)
     {
-        _isDisable = value;
+        _canMove = value;
     }
 }

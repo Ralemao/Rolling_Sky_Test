@@ -11,7 +11,6 @@ public class DeadZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //Stop song
             GameManager.Instance.RemoveLives();
 
             if (GameManager.Instance.GetLives() > 0)

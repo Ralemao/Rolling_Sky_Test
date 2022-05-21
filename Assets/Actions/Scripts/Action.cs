@@ -41,10 +41,16 @@ public class Action : MonoBehaviour
                     break;
 
                 case "Teleport":
-                    if(_obj != null)
+                    if(this.gameObject.name == "In")
+                    {
                         other.GetComponent<PlayerAnimation>().SetPlayerNewPos(_obj.transform.position);
-
-                    other.GetComponent<PlayerAnimation>().DesapearAnim();
+                        other.GetComponent<PlayerAnimation>().DesapearAnim();
+                    }
+                    else
+                    {
+                        GetComponent<MeshRenderer>().enabled = true;
+                        other.GetComponent<PlayerAnimation>().ApearAnim();
+                    }
                     break;
 
                 case "Star":

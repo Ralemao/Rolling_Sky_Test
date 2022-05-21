@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: actions
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1557564739762181704, guid: d04218e9afe537c4e83f09d854b04016,
+        type: 3}
+      propertyPath: _actions
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2911216693605662363, guid: d04218e9afe537c4e83f09d854b04016,
         type: 3}
       propertyPath: m_RootOrder
@@ -35,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 2911216693605662363, guid: d04218e9afe537c4e83f09d854b04016,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2911216693605662363, guid: d04218e9afe537c4e83f09d854b04016,
         type: 3}
