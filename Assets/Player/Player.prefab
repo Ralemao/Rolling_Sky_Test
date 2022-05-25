@@ -104,7 +104,7 @@ MonoBehaviour:
   _moveSpeed: 5
   _zMove: 1
   _jumpForce: 5
-  _waitForTuto: 1.5
+  _waitForTuto: 2
   _cameraMoveSpeed: 2
   _camera: {fileID: 612383102977102540}
 --- !u!114 &898898942602505820

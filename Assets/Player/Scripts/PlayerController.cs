@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    private void Start()
+    void Start()
     {
         transform.position = GameManager.Instance.GetCheckPoint();
     }

@@ -41,6 +41,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     IEnumerator Tutorial()
     {
         yield return new WaitForSeconds(_waitForTuto);
+        UIGame.Instance.TurnOffTuto();
         _canMove = true;
     }
 

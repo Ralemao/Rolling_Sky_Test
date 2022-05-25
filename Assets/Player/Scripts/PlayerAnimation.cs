@@ -39,12 +39,12 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
     {
         yield return new WaitForSeconds(_waitForAnim);
         _anim.SetTrigger("idle");
-        PlayerMovement.Instance.IsMovable(false);
+        PlayerMovement.Instance.IsMovable(true);
     }
 
     public void DesapearAnim()
     {
-        PlayerMovement.Instance.IsMovable(true);
+        PlayerMovement.Instance.IsMovable(false);
         _anim.SetTrigger("desapear");
         StartCoroutine(EndDesapearAnim());
     }

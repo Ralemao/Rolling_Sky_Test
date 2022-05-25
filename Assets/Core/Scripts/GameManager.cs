@@ -1,18 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : SingletonPersisten<GameManager>
 {
-    [SerializeField]
-    private int _lives;
     private int _stars;
-
-    public int GetLives()
-    {
-        return _lives;
-    }
 
     public int GetLevelStars()
     {
@@ -29,9 +23,6 @@ public class GameManager : SingletonPersisten<GameManager>
     public override void Awake()
     {
         base.Awake();
-
-        if (_lives == 3)
-            ResetLevelSettings();
     }
 
     void Start()
@@ -44,39 +35,27 @@ public class GameManager : SingletonPersisten<GameManager>
 
     }
 
+    public void ResetValues()
+    {
+        _stars = 0;
+        _checkPoint = new Vector3(0, 0.5f, 0);
+    }
+
     public void AddNewCheckPoint(Vector3 value)
     {
         _checkPoint = value;
     }
 
-    public void RemoveLives()
+    public void EndTurn()
     {
         //Stop song
         PlayerController.Instance.SetDisable(true);
-
-        if (_lives > 0)
-            _lives--;
-
-        if (_lives > 0)
-            //Call reload scene by canvas after death for play again
-            LevelManager.Instance.ReloadScene();
-
-        if (_lives < 1)
-        {
-            ResetLevelSettings();
-            LevelManager.Instance.LevelMenuScene("Level_Menu");
-        }
-    }
-
-    public void ResetLevelSettings()
-    {
-        _lives = 3;
-        _stars = 0;
-        _checkPoint = new Vector3(0, 0.5f, 0);
+        UIGame.Instance.EndPanel(true);
     }
 
     public void AddStar()
     {
         _stars++;
+        UIGame.Instance.UpdateStars(_stars);
     }
 }

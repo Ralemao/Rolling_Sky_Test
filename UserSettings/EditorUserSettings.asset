@@ -5,6 +5,15 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    RecentlyUsedSceneGuid-0:
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+      value: 500002045050500b545f5872132009444f154e287c2c22647f7a1c6ae3b1313b
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 540305045c535959585c5521447207441016197b7f787f6874281f62b2b6643d
+      flags: 0
     UnityRemoteDevice:
       value: 530104565d055a0b405e5c7345700e354644390f0d7c766208
       flags: 0

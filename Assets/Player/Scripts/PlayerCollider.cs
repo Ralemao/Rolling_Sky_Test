@@ -10,11 +10,11 @@ public class PlayerCollider : Singleton<PlayerCollider>
         switch (hit.collider.tag)
         {
             case "Box":
-                GameManager.Instance.RemoveLives();
+                GameManager.Instance.EndTurn();
                 break;
 
             case "Hammer":
-                GameManager.Instance.RemoveLives();
+                GameManager.Instance.EndTurn();
                 break;
         }
     }

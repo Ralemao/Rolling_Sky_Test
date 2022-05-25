@@ -11,6 +11,8 @@ public class Action : MonoBehaviour
     [SerializeField]
     private Transform _obj;
     private Animator _anim;
+    [SerializeField]
+    private Level _level;
 
     void Start()
     {
@@ -55,7 +57,7 @@ public class Action : MonoBehaviour
 
                 case "Star":
                     GameManager.Instance.AddStar();
-                    Destroy(this.gameObject);
+                    _level.DeActivateStar(this.gameObject);
                     break;
             }
         }

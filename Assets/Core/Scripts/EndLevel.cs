@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadZone : MonoBehaviour
+public class EndLevel : MonoBehaviour
 {
-    [SerializeField]
-    private Transform _checkPoint;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            LevelManager.Instance.AddLevel();
             GameManager.Instance.EndTurn();
-            GameManager.Instance.AddNewCheckPoint(_checkPoint.position);
-        }    
+        }
     }
 }
