@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : SingletonPersisten<Level>
+public class LevelStarsManager : SingletonPersisten<LevelStarsManager>
 {
     [SerializeField]
     private GameObject[] _levelStarsActive;
@@ -39,5 +39,5 @@ public class Level : SingletonPersisten<Level>
     public void SetEndLevel()
     {
         Destroy(this.gameObject);
-    } 
+    }
 }

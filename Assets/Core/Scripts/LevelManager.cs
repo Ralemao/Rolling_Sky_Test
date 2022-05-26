@@ -12,21 +12,22 @@ public class LevelManager : Singleton<LevelManager>
         return _levels;
     }
 
-    private Level _level;
+    public void ResetLevels()
+    {
+        _levels = 0;
+        AddLevel();
+    }
 
     void Start()
     {
-        _level = FindObjectOfType<Level>();
-
         if (_levels == 0)
-            _levels = 1;
+            AddLevel();
+
+        _levels = PlayerPrefs.GetInt("Game_Level_", _levels);
     }
 
     public void MenuScene()
     {
-        if (_level != null)
-            FindObjectOfType<Level>().SetEndLevel();
-
         SceneManager.LoadScene("Menu");
     }
 
@@ -37,9 +38,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public void LevelScene(int value)
     {
-        if (_level != null)
-            FindObjectOfType<Level>().SetEndLevel();
-
         GameManager.Instance.ResetValues();
         SceneManager.LoadScene("Level_" + value);
     }
@@ -52,5 +50,14 @@ public class LevelManager : Singleton<LevelManager>
     public void AddLevel()
     {
         _levels++;
+        PlayerPrefs.SetInt("Game_Level_", _levels);
+    }
+
+    public void SaveLevel(int currentLevel)
+    {
+        if (GameManager.Instance.GetLevelStars() > PlayerPrefs.GetInt("Level_" + (currentLevel))) 
+            PlayerPrefs.SetInt("Level_" + currentLevel, GameManager.Instance.GetLevelStars());
+
+        GameManager.Instance.EndTurn();
     }
 }

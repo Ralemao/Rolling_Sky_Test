@@ -13,4 +13,10 @@ public class UIMenu : Singleton<UIMenu>
     {
         Application.Quit();
     }
+
+    public void Erase()
+    {
+        PlayerPrefs.DeleteAll();
+        LevelManager.Instance.ResetLevels();
+    }
 }

@@ -12,7 +12,7 @@ public class Action : MonoBehaviour
     private Transform _obj;
     private Animator _anim;
     [SerializeField]
-    private Level _level;
+    private LevelStarsManager _level;
 
     void Start()
     {
@@ -57,7 +57,7 @@ public class Action : MonoBehaviour
 
                 case "Star":
                     GameManager.Instance.AddStar();
-                    _level.DeActivateStar(this.gameObject);
+                    this.gameObject.SetActive(false);
                     break;
             }
         }

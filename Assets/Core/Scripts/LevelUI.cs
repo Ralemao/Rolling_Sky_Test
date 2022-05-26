@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelsUI : MonoBehaviour
+public class LevelUI : MonoBehaviour
 {
     public void Menu()
     {
