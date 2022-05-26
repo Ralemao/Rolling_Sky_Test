@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,11 +24,6 @@ public class UIGame : Singleton<UIGame>
     {
         Time.timeScale = 1;
         UpdateStars(GameManager.Instance.GetLevelStars());
-    }
-
-    void Update()
-    {
-
     }
 
     public void EndPanel(bool value)

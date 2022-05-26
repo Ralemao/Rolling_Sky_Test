@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : SingletonPersisten<GameManager>

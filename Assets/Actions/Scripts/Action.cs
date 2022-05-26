@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Action : MonoBehaviour
@@ -11,8 +9,6 @@ public class Action : MonoBehaviour
     [SerializeField]
     private Transform _obj;
     private Animator _anim;
-    [SerializeField]
-    private LevelStarsManager _level;
 
     void Start()
     {
