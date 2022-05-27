@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actions: 5
   _obj: {fileID: 0}
+  _clip: {fileID: 8300000, guid: 938bddcffbd30b849b2296fb59f7f2e6, type: 3}
 --- !u!1 &7337386000739632852
 GameObject:
   m_ObjectHideFlags: 0

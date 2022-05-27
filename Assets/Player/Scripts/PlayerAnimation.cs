@@ -52,4 +52,9 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
         yield return new WaitForSeconds(_waitForAnim);
         _isDesapear = true;
     }
+
+    public void DeathAnim()
+    {
+        _anim.SetTrigger("death");
+    }
 }

@@ -8,12 +8,18 @@ public class PlayerCollider : Singleton<PlayerCollider>
         switch (hit.collider.tag)
         {
             case "Box":
-                GameManager.Instance.EndTurn();
+                Death();
                 break;
 
             case "Hammer":
-                GameManager.Instance.EndTurn();
+                Death();
                 break;
         }
+    }
+
+    private void Death()
+    {
+        PlayerAudio.Instance.DeathAudio();
+        GameManager.Instance.EndTurn();
     }
 }

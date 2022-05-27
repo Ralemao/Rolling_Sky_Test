@@ -9,6 +9,8 @@ public class Action : MonoBehaviour
     [SerializeField]
     private Transform _obj;
     private Animator _anim;
+    [SerializeField]
+    private AudioClip _clip;
 
     void Start()
     {
@@ -19,6 +21,9 @@ public class Action : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (_clip != null)
+                AudioActtions.Instance.PlayAudioClip(_clip);
+
             switch (_actions.ToString())
             {
                 case "Jump":
