@@ -16,12 +16,6 @@ public class LevelManager : Singleton<LevelManager>
         return _isLevelStarted;
     }
 
-    public void ResetLevels()
-    {
-        _levels = 0;
-        AddLevel();
-    }
-
     void Start()
     {
         _levels = PlayerPrefs.GetInt("Game_Level_", _levels);
@@ -70,5 +64,11 @@ public class LevelManager : Singleton<LevelManager>
             PlayerPrefs.SetInt("Level_" + currentLevel, GameManager.Instance.GetLevelStars());
 
         GameManager.Instance.EndTurn();
+    }
+
+    public void ResetLevels()
+    {
+        _levels = 0;
+        AddLevel();
     }
 }
