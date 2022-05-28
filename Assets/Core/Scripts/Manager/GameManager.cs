@@ -37,6 +37,7 @@ public class GameManager : SingletonPersisten<GameManager>
     {
         if (_starsChild == null)
         {
+            value.name = "StarsChild";
             _starsChild = value;
             _starsChild.transform.parent = gameObject.transform;
         }

@@ -390,6 +390,7 @@ MonoBehaviour:
   _startTuto: {fileID: 2988517712283881452}
   _joystick: {fileID: 1513104525913001773}
   _endPanel: {fileID: 2132652493770657625}
+  _starsLevel: {fileID: 0}
 --- !u!1 &1513104525913001773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1401,7 @@ GameObject:
   - component: {fileID: 725119571121219736}
   - component: {fileID: 3279807171562929541}
   m_Layer: 5
-  m_Name: Stars
+  m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

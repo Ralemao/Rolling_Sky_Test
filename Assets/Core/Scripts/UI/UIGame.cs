@@ -26,6 +26,7 @@ public class UIGame : Singleton<UIGame>
     {
         AudioBG.Instance.GameAudio();
         Time.timeScale = 1;
+        _starsLevel = GameObject.Find("Stars").transform;
         UpdateStars(GameManager.Instance.GetLevelStars());
         SetStars();
     }
