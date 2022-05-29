@@ -60,8 +60,8 @@ public class LevelManager : Singleton<LevelManager>
 
     public void SaveLevel(int currentLevel)
     {
-        if (GameManager.Instance.GetLevelStars() > PlayerPrefs.GetInt("Level_" + (currentLevel))) 
-            PlayerPrefs.SetInt("Level_" + currentLevel, GameManager.Instance.GetLevelStars());
+        if (GameManager.Instance.GetLevelDiamonds() > PlayerPrefs.GetInt("Level_" + (currentLevel))) 
+            PlayerPrefs.SetInt("Level_" + currentLevel, GameManager.Instance.GetLevelDiamonds());
 
         GameManager.Instance.EndTurn();
     }

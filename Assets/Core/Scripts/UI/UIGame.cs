@@ -6,7 +6,7 @@ public class UIGame : Singleton<UIGame>
     private bool _isPause;
 
     [SerializeField]
-    private Text _starsText;
+    private Text _diamondsText;
     [SerializeField]
     private Image _pause;
     [SerializeField]
@@ -20,31 +20,31 @@ public class UIGame : Singleton<UIGame>
     [SerializeField]
     private GameObject _endPanel;
     [SerializeField]
-    private Transform _starsLevel;
+    private Transform _diamondsLevel;
 
     void Start()
     {
         AudioBG.Instance.GameAudio();
         Time.timeScale = 1;
-        _starsLevel = GameObject.Find("Stars").transform;
-        UpdateStars(GameManager.Instance.GetLevelStars());
-        SetStars();
+        _diamondsLevel = GameObject.Find("Diamonds").transform;
+        UpdateDiamonds(GameManager.Instance.GetLevelDiamonds());
+        SetDiamonds();
     }
 
-    public void UpdateStars(int stars)
+    public void UpdateDiamonds(int value)
     {
-        _starsText.text = "x " + stars.ToString();
+        _diamondsText.text = "x " + value.ToString();
     }
 
-    private void SetStars()
+    private void SetDiamonds()
     {
         if (!LevelManager.Instance.GetLevelStarted())
         {
             LevelManager.Instance.SetLevelStarted(true);
-            GameManager.Instance.SetStarsChild(_starsLevel);
+            GameManager.Instance.SetDiamondsChild(_diamondsLevel);
         }
         else
-            _starsLevel.gameObject.SetActive(false);
+            _diamondsLevel.gameObject.SetActive(false);
     }
 
     public void TurnOffTuto()

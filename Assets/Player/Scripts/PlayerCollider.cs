@@ -10,10 +10,6 @@ public class PlayerCollider : Singleton<PlayerCollider>
             case "Box":
                 Death();
                 break;
-
-            case "Hammer":
-                Death();
-                break;
         }
     }
 

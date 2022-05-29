@@ -6,8 +6,7 @@ TagManager:
   tags:
   - Ground
   - Box
-  - Hammer
-  - Star
+  - Diamond
   layers:
   - Default
   - TransparentFX

@@ -3,14 +3,14 @@
 [DefaultExecutionOrder(-1)]
 public class GameManager : SingletonPersisten<GameManager>
 {
-    private int _stars;
+    private int _diamonds;
 
-    public int GetLevelStars()
+    public int GetLevelDiamonds()
     {
-        return _stars;
+        return _diamonds;
     }
 
-    private Transform _starsChild;
+    private Transform _diamondsChild;
     private Vector3 _checkPoint;
     
     public Vector3 GetCheckPoint()
@@ -33,27 +33,26 @@ public class GameManager : SingletonPersisten<GameManager>
         //Debug.Log(LevelManager.Instance.GetLevel());
     }
 
-    public void SetStarsChild(Transform value)
+    public void SetDiamondsChild(Transform value)
     {
-        if (_starsChild == null)
+        if (_diamondsChild == null)
         {
-            value.name = "StarsChild";
-            _starsChild = value;
-            _starsChild.transform.parent = gameObject.transform;
+            value.name = "DiamondsChild";
+            _diamondsChild = value;
+            _diamondsChild.transform.parent = gameObject.transform;
         }
     }
 
     public void ResetValues()
     {
-        _stars = 0;
+        _diamonds = 0;
         _checkPoint = new Vector3(0, 0.5f, 0);
 
-        if (_starsChild != null)
+        if (_diamondsChild != null)
         {
-            Destroy(_starsChild.gameObject);
+            Destroy(_diamondsChild.gameObject);
             LevelManager.Instance.SetLevelStarted(false);
         }
-        //AudioBG.Instance.StopAudio();
     }
 
     public void AddNewCheckPoint(Vector3 value)
@@ -68,9 +67,9 @@ public class GameManager : SingletonPersisten<GameManager>
         UIGame.Instance.EndPanel(true);
     }
 
-    public void AddStar()
+    public void AddDiamond()
     {
-        _stars++;
-        UIGame.Instance.UpdateStars(_stars);
+        _diamonds++;
+        UIGame.Instance.UpdateDiamonds(_diamonds);
     }
 }

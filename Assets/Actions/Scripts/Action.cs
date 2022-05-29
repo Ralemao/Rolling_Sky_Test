@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Action : MonoBehaviour
 {
-    private enum Actions { Jump, Fall, Box, Teleport, Move, Star }
+    private enum Actions { Jump, Fall, Box, Teleport, Move, Diamond }
     [SerializeField]
     private Actions _actions;
 
@@ -56,8 +56,8 @@ public class Action : MonoBehaviour
                     }
                     break;
 
-                case "Star":
-                    GameManager.Instance.AddStar();
+                case "Diamond":
+                    GameManager.Instance.AddDiamond();
                     this.gameObject.SetActive(false);
                     break;
             }

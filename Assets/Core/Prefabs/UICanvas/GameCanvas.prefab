@@ -383,14 +383,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94884d012284f04c88004e67d2b1ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _starsText: {fileID: 549538049969696448}
+  _diamondsText: {fileID: 549538049969696448}
   _pause: {fileID: 8003504190858732718}
   _play: {fileID: 7997633370069471882}
   _return: {fileID: 6756684559713825423}
   _startTuto: {fileID: 2988517712283881452}
   _joystick: {fileID: 1513104525913001773}
   _endPanel: {fileID: 2132652493770657625}
-  _starsLevel: {fileID: 0}
+  _diamondsLevel: {fileID: 0}
 --- !u!1 &1513104525913001773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 120722406445249654}
   - component: {fileID: 549538049969696448}
   m_Layer: 5
-  m_Name: Stars_Text
+  m_Name: Diamond_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1401,7 +1401,7 @@ GameObject:
   - component: {fileID: 725119571121219736}
   - component: {fileID: 3279807171562929541}
   m_Layer: 5
-  m_Name: Star
+  m_Name: Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
