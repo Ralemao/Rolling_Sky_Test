@@ -19,7 +19,6 @@ public class UIGame : Singleton<UIGame>
     private GameObject _joystick;
     [SerializeField]
     private GameObject _endPanel;
-    [SerializeField]
     private Transform _diamondsLevel;
 
     void Start()

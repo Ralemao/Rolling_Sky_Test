@@ -91,7 +91,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     {
         if (_cController.isGrounded)
         {
-            _yMove = -0.5f;
+            _yMove = -1f;
 
             if (_isJump)
             {

@@ -46,7 +46,7 @@ public class GameManager : SingletonPersisten<GameManager>
     public void ResetValues()
     {
         _diamonds = 0;
-        _checkPoint = new Vector3(0, 0.5f, 0);
+        _checkPoint = new Vector3(0, 1, 1);
 
         if (_diamondsChild != null)
         {
