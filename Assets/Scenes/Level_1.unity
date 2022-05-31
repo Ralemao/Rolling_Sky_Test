@@ -1752,6 +1752,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4246549029200825626, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246549029200825626, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4271083284020166510, guid: 442ba3f6f49535d438d3410554d8a0e0,
         type: 3}
       propertyPath: m_IsActive
