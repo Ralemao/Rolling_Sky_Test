@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actions: 3
   _obj: {fileID: 0}
+  _clip: {fileID: 0}
 --- !u!1 &5193746715867106264
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +243,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 2, z: 0.6}
+  m_Size: {x: 0.8, y: 2, z: 0.8}
   m_Center: {x: 0, y: -5, z: 0}
 --- !u!95 &4086872309603158208
 Animator:
@@ -278,3 +279,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actions: 3
   _obj: {fileID: 5270428232821475381}
+  _clip: {fileID: 0}

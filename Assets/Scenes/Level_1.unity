@@ -977,6 +977,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 485683383256585472, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 526121343556783718, guid: 442ba3f6f49535d438d3410554d8a0e0,
         type: 3}
       propertyPath: m_IsActive
@@ -1171,6 +1176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225850014821080832, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1261213290956558983, guid: 442ba3f6f49535d438d3410554d8a0e0,
         type: 3}
@@ -2427,6 +2437,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6905501424839190898, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6906879385231948745, guid: 442ba3f6f49535d438d3410554d8a0e0,
         type: 3}
       propertyPath: m_IsActive
@@ -2737,6 +2752,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8606498080458066655, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8626924121461942809, guid: 442ba3f6f49535d438d3410554d8a0e0,
         type: 3}
       propertyPath: m_IsActive
@@ -2871,6 +2891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177008043551048667, guid: 442ba3f6f49535d438d3410554d8a0e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442ba3f6f49535d438d3410554d8a0e0, type: 3}
