@@ -9,7 +9,7 @@ public class EndLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(LevelManager.Instance.GetLevel() == _currentLevel)
+            if(LevelManager.Instance.Levels == _currentLevel)
                 LevelManager.Instance.AddLevel();
 
             LevelManager.Instance.SaveLevel(_currentLevel);

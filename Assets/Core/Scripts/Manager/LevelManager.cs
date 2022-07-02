@@ -4,29 +4,23 @@ using UnityEngine.SceneManagement;
 public class LevelManager : Singleton<LevelManager>
 {
     private int _levels;
+    public int Levels { get { return _levels; } }
     private bool _isLevelStarted;
-
-    public int GetLevel()
-    {
-        return _levels;
-    }
-
-    public bool GetLevelStarted()
-    {
-        return _isLevelStarted;
-    }
+    public bool LevelStarted { get { return _isLevelStarted; } set { _isLevelStarted = value; } }
 
     void Start()
     {
         _levels = PlayerPrefs.GetInt("Game_Level_", _levels);
 
+        //Set first level avaible
         if (_levels == 0)
             AddLevel();
     }
 
-    public void SetLevelStarted(bool value)
+    public void AddLevel()
     {
-        _isLevelStarted = value;
+        _levels++;
+        PlayerPrefs.SetInt("Game_Level_", _levels);
     }
 
     public void MenuScene()
@@ -52,16 +46,11 @@ public class LevelManager : Singleton<LevelManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void AddLevel()
-    {
-        _levels++;
-        PlayerPrefs.SetInt("Game_Level_", _levels);
-    }
-
     public void SaveLevel(int currentLevel)
     {
-        if (GameManager.Instance.GetLevelDiamonds() > PlayerPrefs.GetInt("Level_" + (currentLevel))) 
-            PlayerPrefs.SetInt("Level_" + currentLevel, GameManager.Instance.GetLevelDiamonds());
+        //If currentLevel gets 3 diamonds, then it wont be able to get less if play again
+        if (GameManager.Instance.LevelDiamonds > PlayerPrefs.GetInt("Level_" + (currentLevel))) 
+            PlayerPrefs.SetInt("Level_" + currentLevel, GameManager.Instance.LevelDiamonds);
 
         GameManager.Instance.EndTurn();
     }

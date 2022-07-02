@@ -390,7 +390,6 @@ MonoBehaviour:
   _startTuto: {fileID: 2988517712283881452}
   _joystick: {fileID: 1513104525913001773}
   _endPanel: {fileID: 2132652493770657625}
-  _diamondsLevel: {fileID: 0}
 --- !u!1 &1513104525913001773
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 225, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6687721875163090691
@@ -915,8 +914,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 200, y: 125}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 340, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1272663083672311459
 CanvasRenderer:

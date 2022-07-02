@@ -9,8 +9,5 @@ public class AudioActtions : Singleton<AudioActtions>
         _audio = GetComponent<AudioSource>();
     }
 
-    public void PlayAudioClip(AudioClip value)
-    {
-        _audio.PlayOneShot(value);
-    }
+    public AudioClip PlayAudioClip { set { _audio.PlayOneShot(value); } }
 }

@@ -9,6 +9,7 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
 
     private Animator _anim;
     private Vector3 _newPosition;
+    public Vector3 PlayerNewPos { set { _newPosition = value; } }
 
     void Start()
     {
@@ -17,15 +18,12 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
 
     void Update()
     {
+        //Teleport action
         if(_isDesapear)
             transform.position = _newPosition;
     }
 
-    public void SetPlayerNewPos(Vector3 value)
-    {
-        _newPosition = value;
-    }
-
+    #region TeleportAnim
     public void ApearAnim()
     {
         _isDesapear = false;
@@ -37,12 +35,12 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
     {
         yield return new WaitForSeconds(_waitForAnim);
         _anim.SetTrigger("idle");
-        PlayerMovement.Instance.IsMovable(true);
+        PlayerMovement.Instance.IsMovable = true;
     }
 
     public void DesapearAnim()
     {
-        PlayerMovement.Instance.IsMovable(false);
+        PlayerMovement.Instance.IsMovable = false;
         _anim.SetTrigger("desapear");
         StartCoroutine(EndDesapearAnim());
     }
@@ -52,6 +50,7 @@ public class PlayerAnimation : Singleton<PlayerAnimation>
         yield return new WaitForSeconds(_waitForAnim);
         _isDesapear = true;
     }
+    #endregion
 
     public void DeathAnim()
     {

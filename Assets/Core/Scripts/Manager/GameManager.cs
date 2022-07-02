@@ -4,35 +4,14 @@
 public class GameManager : SingletonPersisten<GameManager>
 {
     private int _diamonds;
+    public int LevelDiamonds { get { return _diamonds; } }
 
-    public int GetLevelDiamonds()
-    {
-        return _diamonds;
-    }
-
-    private Transform _diamondsChild;
     private Vector3 _checkPoint;
-    
-    public Vector3 GetCheckPoint()
-    {
-        return _checkPoint;
-    }
+    public Vector3 CheckPoint { get { return _checkPoint; } }
 
-    public override void Awake()
-    {
-        base.Awake();
-    }
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        //Debug.Log(LevelManager.Instance.GetLevel());
-    }
-
+    //DiamondsChild are diamonds that become gamemanager child while playing the level
+    //DiamondsChild are setting when checkpoint get save
+    private Transform _diamondsChild;
     public void SetDiamondsChild(Transform value)
     {
         if (_diamondsChild == null)
@@ -43,27 +22,27 @@ public class GameManager : SingletonPersisten<GameManager>
         }
     }
 
+    //Reset values
     public void ResetValues()
     {
         _diamonds = 0;
+        //Reset Player start position
         _checkPoint = new Vector3(0, 1, 1);
 
         if (_diamondsChild != null)
         {
             Destroy(_diamondsChild.gameObject);
-            LevelManager.Instance.SetLevelStarted(false);
+            LevelManager.Instance.LevelStarted = false;
         }
     }
 
-    public void AddNewCheckPoint(Vector3 value)
-    {
-        _checkPoint = value;
-    }
+    //Set new checkpoint when death
+    public Vector3 SetNewCheckPoint { set { _checkPoint = value; } }
 
     public void EndTurn()
     {
         AudioBG.Instance.StopAudio();
-        PlayerController.Instance.SetDisable(true);
+        PlayerController.Instance.SetDisable = true;
         UIGame.Instance.EndPanel(true);
     }
 

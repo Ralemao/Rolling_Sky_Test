@@ -25,9 +25,10 @@ public class UIGame : Singleton<UIGame>
     {
         AudioBG.Instance.GameAudio();
         Time.timeScale = 1;
+        //Diamonds is all diamonds father
         _diamondsLevel = GameObject.Find("Diamonds").transform;
-        UpdateDiamonds(GameManager.Instance.GetLevelDiamonds());
-        SetDiamonds();
+        UpdateDiamonds(GameManager.Instance.LevelDiamonds);
+        SetDiamondsToGameManager();
     }
 
     public void UpdateDiamonds(int value)
@@ -35,17 +36,18 @@ public class UIGame : Singleton<UIGame>
         _diamondsText.text = "x " + value.ToString();
     }
 
-    private void SetDiamonds()
+    private void SetDiamondsToGameManager()
     {
-        if (!LevelManager.Instance.GetLevelStarted())
+        if (!LevelManager.Instance.LevelStarted)
         {
-            LevelManager.Instance.SetLevelStarted(true);
+            LevelManager.Instance.LevelStarted = true;
             GameManager.Instance.SetDiamondsChild(_diamondsLevel);
         }
         else
             _diamondsLevel.gameObject.SetActive(false);
     }
 
+    //Turn off tuto animation
     public void TurnOffTuto()
     {
         _startTuto.SetActive(false);
@@ -60,7 +62,7 @@ public class UIGame : Singleton<UIGame>
 
     public void EndPanel(bool value)
     {
-        PlayerController.Instance.SetDisable(value);
+        PlayerController.Instance.SetDisable = value;
         _joystick.SetActive(!value);
         _endPanel.SetActive(value);
         _pause.gameObject.SetActive(!value);

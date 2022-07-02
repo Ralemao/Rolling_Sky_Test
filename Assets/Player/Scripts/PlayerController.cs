@@ -4,11 +4,9 @@ public class PlayerController : Singleton<PlayerController>
 {
     void Start()
     {
-        transform.position = GameManager.Instance.GetCheckPoint();
+        //Set player to current checkpoint
+        transform.position = GameManager.Instance.CheckPoint;
     }
 
-    public void SetDisable(bool value)
-    {
-        PlayerMovement.Instance.enabled = !value;
-    }
+    public bool SetDisable { set { PlayerMovement.Instance.enabled = !value; } }
 }

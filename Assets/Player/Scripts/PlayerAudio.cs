@@ -4,7 +4,6 @@ public class PlayerAudio : Singleton<PlayerAudio>
 {
     [SerializeField]
     private AudioClip _deathAudio;
-
     private AudioSource _audio;
 
     void Start()

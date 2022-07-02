@@ -15,7 +15,9 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField]
     private float _waitForTuto;
     private bool _isJump;
+    public bool IsJump { set { _isJump = value; } }
     private bool _canMove;
+    public bool IsMovable { set { _canMove = value; } }
 
     [Header("Camera")]
     [SerializeField]
@@ -99,15 +101,5 @@ public class PlayerMovement : Singleton<PlayerMovement>
                 _yMove = _jumpForce;
             }
         }
-    }
-
-    public void SetJump(bool value)
-    {
-        _isJump = value;
-    }
-
-    public void IsMovable(bool value)
-    {
-        _canMove = value;
     }
 }

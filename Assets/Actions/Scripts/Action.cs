@@ -22,31 +22,31 @@ public class Action : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (_clip != null)
-                AudioActtions.Instance.PlayAudioClip(_clip);
+                AudioActtions.Instance.PlayAudioClip = _clip;
 
-            switch (_actions.ToString())
+            switch (_actions)
             {
-                case "Jump":
+                case Actions.Jump:
                     _anim.SetTrigger("jump");
-                    other.GetComponent<PlayerMovement>().SetJump(true);
+                    other.GetComponent<PlayerMovement>().IsJump = true;
                     break;
 
-                case "Fall":
+                case Actions.Fall:
                     _anim.SetTrigger("fall");
                     break;
 
-                case "Box":
+                case Actions.Box:
                     _anim.SetTrigger("boxUp");
                     break;
 
-                case "Move":
+                case Actions.Move:
                     _anim.SetTrigger("move");
                     break;
 
-                case "Teleport":
+                case Actions.Teleport:
                     if(this.gameObject.name == "In")
                     {
-                        other.GetComponent<PlayerAnimation>().SetPlayerNewPos(_obj.transform.position);
+                        other.GetComponent<PlayerAnimation>().PlayerNewPos = _obj.transform.position;
                         other.GetComponent<PlayerAnimation>().DesapearAnim();
                     }
                     else
@@ -56,7 +56,7 @@ public class Action : MonoBehaviour
                     }
                     break;
 
-                case "Diamond":
+                case Actions.Diamond:
                     GameManager.Instance.AddDiamond();
                     this.gameObject.SetActive(false);
                     break;

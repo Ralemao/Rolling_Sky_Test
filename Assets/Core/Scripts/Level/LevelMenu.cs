@@ -17,7 +17,7 @@ public class LevelMenu : MonoBehaviour
 
     private void LevelButton()
     {
-        if (_levelIndex <= LevelManager.Instance.GetLevel())
+        if (_levelIndex <= LevelManager.Instance.Levels)
         {
             _diamonds = PlayerPrefs.GetInt("Level_" + _levelIndex);
             GetComponent<Button>().interactable = true;
